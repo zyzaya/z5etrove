@@ -2,6 +2,7 @@ import './style.css'
 import './zGrid/zgrid_default.css'
 import { zGrid } from './zGrid/zGrid.js'
 import Papa from "papaparse";
+import { load } from './load.js';
 
 import('./zGrid/zGrid')
 
@@ -14,7 +15,7 @@ let grid = new zGrid({
   columns: [
     "Name",
     "Source",
-    "Cost",
+    "Value",
     "Attunement",
     "Rarity",
     "Include?",
@@ -36,20 +37,7 @@ if (file != null) {
   file.addEventListener('change', (event) => {
     let target = event.target as HTMLInputElement
     if (event.target == null || target.files == null) return;
-    
-    Papa.parse(target.files[0], {
-      header: true,
-      complete: (results) => {
-        console.log(results)
-        let data: Array<Record<string, string>> = [];
-        results.data.forEach((e, i) => {
-          let row = e as Record<string, string>;
-          row["id"] = i.toString();
-          data.push(row)
-        })
-        grid.reconfigure({ data: data })
-      }
-    })
+    load(target.files[0], grid)
   })
 }
 

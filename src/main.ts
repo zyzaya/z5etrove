@@ -1,7 +1,9 @@
 import './style.css'
-import './zgrid_default.css'
-import { zGrid } from './zGrid.js'
+import './zGrid/zgrid_default.css'
+import { zGrid } from './zGrid/zGrid.js'
 import Papa from "papaparse";
+
+import('./zGrid/zGrid')
 
 let results: any = [];
 
@@ -32,15 +34,17 @@ if (container != null) {
 let file = document.getElementById("load_file")
 if (file != null) {
   file.addEventListener('change', (event) => {
-    if (event.target == null) return;
-    Papa.parse(event.target.files[0], {
+    let target = event.target as HTMLInputElement
+    if (event.target == null || target.files == null) return;
+    
+    Papa.parse(target.files[0], {
       header: true,
       complete: (results) => {
         console.log(results)
-        let data = []
+        let data: Array<Record<string, string>> = [];
         results.data.forEach((e, i) => {
-          let row = e;
-          row["id"] = i;
+          let row = e as Record<string, string>;
+          row["id"] = i.toString();
           data.push(row)
         })
         grid.reconfigure({ data: data })

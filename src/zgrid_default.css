@@ -1,0 +1,148 @@
+.zgrid_table {
+  border: 1px solid gray;
+  border-radius: 10px;
+  overflow: hidden;
+  border-spacing: 0;
+  border-bottom: 3px solid gray;
+  table-layout: fixed;
+  width: 100%;
+  height: fit-content;
+}
+
+.zgrid_header {
+  border-bottom: 2px solid gray;
+  border-left: 1px solid gray;
+  background-color: lightgray;
+}
+
+.zgrid_header_content {
+  display: grid;
+  grid-template-columns: 1fr min-content min-content;
+  height: 100%;
+}
+
+.zgrid_title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-self: center;
+  padding: 3px;
+}
+
+.zgrid_sort_button_container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.zgrid_sort_button {
+  background: none;
+  color: gray;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.zgrid_sort_button:hover {
+  cursor: pointer;
+}
+
+.zgrid_sort_button_active {
+  color: black;
+}
+
+.zgrid_header:first-child {
+  border-left: none;
+}
+
+.zgrid_column_resize {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: 5px;
+  position: relative;
+  height: 110%;
+  top: -5%;
+  left: 5px;
+}
+
+.zgrid_column_resize:hover {
+  cursor: col-resize;
+}
+
+.zgrid_cell {
+  padding: 10px 20px;
+  border-left: 1px solid gray;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.zgrid_cell:first-child {
+  border-left: none;
+}
+
+.zgrid_row:nth-child(even) {
+  background-color: rgb(230, 230, 230);
+}
+
+.zgrid_filter {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline-offset: 2px;
+  outline-color: lightblue;
+}
+
+.zgrid_pages_info_container {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 5px;
+}
+
+.zgrid_pages_info {
+  white-space: nowrap;
+  height: min-content;
+  align-self: center;
+}
+
+.zgrid_pages_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.zgrid_page_button {
+  padding: 5px 10px;
+  margin-top: 5px;
+  border: 1px solid gray;
+  background: none;
+}
+
+.zgrid_page_button:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.zgrid_page_button:active {
+  background-color: rgb(240, 240, 240);
+}
+
+.zgrid_page_button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.zgrid_page_button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.zgrid_current_page {
+  background-color: rgb(230, 230, 230);
+}
+
+.zgrid_hidden {
+  display: none;
+}
+
+.zgrid_selected {
+  box-shadow: inset 0 0 0 1px black;
+}

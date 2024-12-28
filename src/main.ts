@@ -1,7 +1,6 @@
 import './style.css'
 import './zGrid/zgrid_default.css'
 import { zGrid } from './zGrid/zGrid.js'
-import Papa from "papaparse";
 import { load } from './load.js';
 
 import('./zGrid/zGrid')
@@ -18,10 +17,26 @@ let grid = new zGrid({
     "Value",
     "Attunement",
     "Rarity",
-    "Include?",
-    "Reason",
-    "Quantity",
-    "Text"
+    {
+      id: "include",
+      name: "Include?",
+      visible: false
+    },
+    {
+      id: "reason",
+      name: "Reason",
+      visible: false,
+    },
+    {
+      id: "quantity",
+      name: "Quantity",
+      visible: false
+    },
+    {
+      id: "Text",
+      name: "Text",
+      visible: false
+    }
   ],
   pagination: 20,
 })

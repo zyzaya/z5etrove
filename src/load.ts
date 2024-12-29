@@ -29,7 +29,6 @@ function load(file: any, grid: zGrid) {
     header: true,
     complete: (results) => {
       let data: Array<Record<string, any>> = [];
-      console.log(results)
       results.data.forEach((e) => {
         let row = e as Record<string, any>
         row["id"] = row["Name"]
@@ -40,7 +39,6 @@ function load(file: any, grid: zGrid) {
           row["Value"] = cost
         }
         // include
-        console.log(`${row["Rarity"]}, ${row["Rarity"] === "artifact"}`)
         if (row["Rarity"] === "artifact") {
           row["Include?"] = "no"
           row["Reason"] = "artifact"
@@ -53,6 +51,12 @@ function load(file: any, grid: zGrid) {
         // quantity
         row["Quantity"] = 1
         data.push(row)
+        // attunement
+        if (row["Attunement"] === "requires attunement") {
+          row["Attunement"] = "yes"
+        } else {
+          row["Attunement"] = row["Attunement"].replace("requires attunement ", "")
+        }
       })
       grid.reconfigure({
         data: data

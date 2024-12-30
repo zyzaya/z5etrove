@@ -11,6 +11,7 @@ let container = document.getElementById("zgrid_container")
 let detail_container = document.getElementById("detail_container") as HTMLDivElement
 let next_id = 0;
 
+// setup grid
 let grid = new zGrid({
   parent: document.createElement('div'),
   className: {
@@ -61,9 +62,8 @@ let grid = new zGrid({
   pagination: 20,
 })
 
-//
+// details
 let detail: Detail;
-
 if (container != null && detail_container != null) {
   detail = new Detail(
     detail_container, 
@@ -73,9 +73,10 @@ if (container != null && detail_container != null) {
   )
   grid.reconfigure({
     parent: container,
-    onClick: (c, r, n, row) => detail.set(row)
+    onClick: (_, _1, _2, row) => detail.set(row)
   })
 }
+// adding new item
 let new_item = document.getElementById('new_item')
 if (new_item != null) {
   new_item.onclick = () => {
@@ -87,7 +88,7 @@ if (new_item != null) {
     next_id += 1;
   }
 }
-
+// save/load
 let save_button = document.getElementById('save')
 if (save_button != null) {
   save_button.onclick = () => {
@@ -100,10 +101,10 @@ let file = document.getElementById("load_file")
 if (file != null) {
   file.addEventListener('change', (event) => {
     let target = event.target as HTMLInputElement
-    if (event.target == null || target.files == null) return;
+    if (event.target == null || target.files == null || target.files[0] === undefined) return;
     load(target.files[0], grid)
     next_id = grid.getRawData().length + 1;
   })
 }
-
-let trove = new Trove(grid);
+// trove
+new Trove(grid);

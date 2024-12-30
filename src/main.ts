@@ -49,7 +49,7 @@ let grid = new zGrid({
   pagination: 20,
 })
 
-
+//
 
 if (container != null && detail_container != null) {
   let detail = new Detail(detail_container, (row) => {})

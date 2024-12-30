@@ -9,9 +9,10 @@ export default class Detail {
 
   set(row: Record<string, string>) {
     this.parent.replaceChildren()
-    let entries_div = document.createElement('div')
+    let entries = document.createElement('div')
+    entries.classList.add('entries_container')
     for (const [key, value] of Object.entries(row)) {
-      if (key !== "Text") {
+      if (key !== "id" && key !== "Text") {
         let div = document.createElement('div')
         let label = document.createElement('label')
         label.innerText = key
@@ -21,7 +22,7 @@ export default class Detail {
         input.value = value;
         div.appendChild(input)
         
-        entries_div.appendChild(div)  
+        entries.appendChild(div)  
       }
     }
     let text = document.createElement('textarea')
@@ -29,7 +30,7 @@ export default class Detail {
 
     let submit = document.createElement('input')
     submit.type = "submit"
-    this.parent.appendChild(entries_div)
+    this.parent.appendChild(entries)
     this.parent.append(text)
     this.parent.appendChild(submit)
   }

@@ -23,3 +23,11 @@
   white-space: unset;
   text-overflow: unset;
 }
+
+#detail_container {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 1fr min-content;
+  gap: 2px;
+  margin: 2px;
+}

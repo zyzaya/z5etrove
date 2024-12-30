@@ -52,7 +52,13 @@ let grid = new zGrid({
 //
 
 if (container != null && detail_container != null) {
-  let detail = new Detail(detail_container, (row) => {})
+  let detail = new Detail(
+    detail_container, 
+    (row) => {
+      console.log(row)
+      grid.setRow(row["id"], row)
+    }
+  )
   grid.reconfigure({
     parent: container,
     onClick: (c, r, n, row) => detail.set(row)

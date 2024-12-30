@@ -3,6 +3,7 @@ import './zGrid/zgrid_default.css'
 import './style.css'
 import { load, save } from './load.js';
 import Detail from './Detail.js';
+import Trove from './Trove.js';
 
 import('./zGrid/zGrid')
 
@@ -37,7 +38,7 @@ let grid = new zGrid({
     },
     "Rarity",
     {
-      id: "include",
+      id: "Include?",
       name: "in?",
       visible: false
     },
@@ -105,3 +106,4 @@ if (file != null) {
   })
 }
 
+let trove = new Trove(grid);

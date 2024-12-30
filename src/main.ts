@@ -20,7 +20,17 @@ let grid = new zGrid({
   columns: [
     "Name",
     "Source",
-    "Value",
+    {
+      id: "Value",
+      name: "Value",
+      sort: (a, b) => {
+        let a1 = parseInt(a)
+        if (Number.isNaN(a1)) a1 = 0;
+        let b1 = parseInt(b)
+        if (Number.isNaN(b1)) b1 = 0;
+        return a1 - b1
+      }
+    },
     {
       id: "Attunement",
       name: "A."

@@ -12,6 +12,10 @@ export default class Detail {
     this.parent.replaceChildren()
     let entries = document.createElement('div')
     entries.classList.add('entries_container')
+    let hide = document.createElement('button')
+    hide.onclick = () => this.parent.replaceChildren();
+    hide.innerText = "Hide"
+    entries.appendChild(hide)
     for (const [key, value] of Object.entries(row)) {
       if (key !== "id" && key !== "Text") {
         let div = document.createElement('div')

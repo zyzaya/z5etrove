@@ -2,6 +2,10 @@
   margin: 0px;
 }
 
+body {
+  margin: 10px;
+}
+
 .header:nth-of-type(2) {
   width: 5% !important;
 }
@@ -37,7 +41,7 @@
   flex-direction: column;
   border: 1px solid black;
   margin: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 48px;
 }
 
 #trove_output > div {

@@ -33,30 +33,36 @@ function load(file: any, grid: zGrid) {
         let row = e as Record<string, any>
         row["id"] = i.toString();
         // Value
-        if (row["Rarity"] !== "artifact" && row["Rarity"] !== "varies") {
-          let rarity = row["Rarity"]
-          let cost = costs[rarity]
-          row["Value"] = cost
+        if (row["Value"] === "" || row["Include?"] === undefined) {
+          if (row["Rarity"] !== "artifact" && row["Rarity"] !== "varies") {
+            let rarity = row["Rarity"]
+            let cost = costs[rarity]
+            row["Value"] = cost
+          }
         }
         // include
-        if (row["Rarity"] === "artifact") {
-          row["Include?"] = "no"
-          row["Reason"] = "artifact"
-        } else if (row["Rarity"] === "varies") {
-          row["Include?"] = "no"
-          row["Reason"] = "varies"
-        } else {
-          row["Include?"] = "yes"
+        if (row["Include?"] === "" || row["Include?"] === undefined) {
+          if (row["Rarity"] === "artifact") {
+            row["Include?"] = "no"
+            row["Reason"] = "artifact"
+          } else if (row["Rarity"] === "varies") {
+            row["Include?"] = "no"
+            row["Reason"] = "varies"
+          } else {
+            row["Include?"] = "yes"
+          }
         }
         // quantity
-        row["Quantity"] = 1
-        data.push(row)
+        if (row["Quantity"] === "" || row["Quantity"] === undefined) {
+          row["Quantity"] = 1
+        }
         // attunement
         if (row["Attunement"] === "requires attunement") {
           row["Attunement"] = "yes"
         } else {
           row["Attunement"] = row["Attunement"].replace("requires attunement ", "")
         }
+        data.push(row)
       })
       grid.reconfigure({
         data: data
@@ -65,20 +71,16 @@ function load(file: any, grid: zGrid) {
   })
 }
 
-// loads from a csv file
-// updates existing data
-// returns data in a format readable by zGrid
-// method: determines how the data/csv are merged
-// replace: data rows are replaced by csv (with default values)
-// add: data rows are untouched, only additional rows are added
-// function merge(data, filename, method) {
+function save(grid: zGrid) {
+  let data = grid.getRawData();
+  let csv = Papa.unparse(data)
+  let blob = new Blob([csv], { type: 'text/plain'})
+  let fileURL = URL.createObjectURL(blob)
+  let download_link = document.createElement('a')
+  download_link.href = fileURL;
+  download_link.download = 'item.csv'
+  download_link.click()
+  URL.revokeObjectURL(fileURL);
+}
 
-// }
-
-// takes getRawData from zgrid
-// saves to csv
-// function save(data) {
-
-// }
-
-export { load }
+export { load, save }

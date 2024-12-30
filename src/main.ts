@@ -1,7 +1,7 @@
 import { zGrid } from './zGrid/zGrid.js'
 import './zGrid/zgrid_default.css'
 import './style.css'
-import { load } from './load.js';
+import { load, save } from './load.js';
 import Detail from './Detail.js';
 
 import('./zGrid/zGrid')
@@ -74,6 +74,14 @@ if (new_item != null) {
     grid.setSelected(next_id)
     detail?.set(grid.getRow(next_id))
     next_id += 1;
+  }
+}
+
+let save_button = document.getElementById('save')
+if (save_button != null) {
+  save_button.onclick = () => {
+    console.log("save")
+    save(grid);
   }
 }
 

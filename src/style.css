@@ -31,3 +31,20 @@
   gap: 2px;
   margin: 2px;
 }
+
+#trove_output {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 2px;
+  margin-bottom: 16px;
+}
+
+#trove_output > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#trove_output > div:nth-child(even) {
+  background-color: rgb(230, 230, 230);
+}

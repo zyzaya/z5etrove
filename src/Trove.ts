@@ -17,6 +17,7 @@ let rarities = [
 export default class Trove {
   private rarity_input: Array<HTMLInputElement>;
   private gold_input: HTMLInputElement;
+  private output: HTMLDivElement;
   private grid: zGrid;
 
   constructor(grid: zGrid) {
@@ -27,6 +28,7 @@ export default class Trove {
       this.rarity_input.push(input);
     })
     this.gold_input = document.getElementById('max gold') as HTMLInputElement
+    this.output = document.getElementById('trove_output') as HTMLDivElement
     // 
     let roll_trove = document.getElementById('roll_trove')
     if (roll_trove != null) {
@@ -41,7 +43,7 @@ export default class Trove {
           remaining_gold -= parseInt(item["Value"])
           data = data.filter((r) => parseInt(r["Value"]) <= remaining_gold)
         }
-        console.log(trove)
+        this.setOutput(trove)
       }
     }
     let roll_item = document.getElementById('roll_item')
@@ -49,9 +51,24 @@ export default class Trove {
       roll_item.onclick = () => {
         let data = this.filterData();
         let i = getRandomInt(data.length)
-        console.log(data[i])
+        this.output.replaceChildren();
+        this.setOutput([data[i]])
       }
     }
+  }
+
+  private setOutput(items: Array<Record<string, string>>) {
+    this.output.replaceChildren()
+    items.forEach((e) => {
+      let div = document.createElement('div')
+      let cols = ["Name", "Value", "Attunement", "Rarity"]
+      cols.forEach((c) => {
+        let span = document.createElement('span')
+        span.innerText = e[c]
+        div.appendChild(span)
+      })
+      this.output.appendChild(div)
+    })
   }
 
   private filterData(): Array<Record<string, string>> {

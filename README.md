@@ -31,4 +31,6 @@
 ```how to build or deploy```
 
 **build:** `npm run build`\
-**preview:** `npm run preview`
+**preview:** `npm run preview`\
+gihub action is setup in github-pages.yml\
+deploys when pushing to main

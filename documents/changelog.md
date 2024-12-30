@@ -1,4 +1,2 @@
-# vx.y.z - Month Day, YYYY
-- implement feature#n. description.
-
-- fix issue#n. description.
+# v1.0.0 - December 30, 2024
+- Initial release

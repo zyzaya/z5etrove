@@ -1,35 +1,43 @@
-import './style.css'
-import './zGrid/zgrid_default.css'
 import { zGrid } from './zGrid/zGrid.js'
+import './zGrid/zgrid_default.css'
+import './style.css'
 import { load } from './load.js';
+import Detail from './Detail.js';
 
 import('./zGrid/zGrid')
 
-let results: any = [];
-
 let container = document.getElementById("zgrid_container")
+let detail_container = document.getElementById("detail_container") as HTMLDivElement
+
 let grid = new zGrid({
   parent: document.createElement('div'),
+  className: {
+    th: "header",
+    td: "cell"
+  },
   data: [],
   columns: [
     "Name",
     "Source",
     "Value",
-    "Attunement",
+    {
+      id: "Attunement",
+      name: "A."
+    },
     "Rarity",
     {
       id: "include",
-      name: "Include?",
+      name: "in?",
       visible: false
     },
     {
       id: "reason",
-      name: "Reason",
+      name: "why",
       visible: false,
     },
     {
       id: "quantity",
-      name: "Quantity",
+      name: "#",
       visible: false
     },
     {
@@ -41,9 +49,13 @@ let grid = new zGrid({
   pagination: 20,
 })
 
-if (container != null) {
+
+
+if (container != null && detail_container != null) {
+  let detail = new Detail(detail_container, (row) => {})
   grid.reconfigure({
-    parent: container
+    parent: container,
+    onClick: (c, r, n, row) => detail.set(row)
   })
 }
 

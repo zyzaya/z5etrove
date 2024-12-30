@@ -1,3 +1,25 @@
 * {
   margin: 0px;
 }
+
+.header:nth-of-type(2) {
+  width: 5% !important;
+}
+
+.header:nth-of-type(3) {
+  width: 5% !important;
+}
+
+.header:nth-of-type(4) {
+  width: 7% !important;
+}
+
+.header:nth-of-type(5) {
+  width: 5% !important;
+}
+
+.cell {
+  padding: 0 2px;
+  white-space: unset;
+  text-overflow: unset;
+}

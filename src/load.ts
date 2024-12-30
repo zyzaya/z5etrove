@@ -1,18 +1,6 @@
 import Papa from "papaparse";
 import { zGrid } from "./zGrid/zGrid";
 
-// loads from a csv file
-// returns data in a format readable by zGrid
-// name: also zgrid id
-// source
-// cost: defaults to DMG'24 values based on rarity
-// attunement:
-// rarity:
-// include: unless rarity is artifact
-// reason:
-// quantity: a max count for trove rolls (default 1)
-// text: 
-
 // from DMG'24 pg 217
 let costs: Record<string, number> = {
   "common": 100,
@@ -20,8 +8,8 @@ let costs: Record<string, number> = {
   "rare": 4000,
   "very rare": 40000,
   "legendary": 200000,
-  // "artifact": 0,
-  // "varies": 0
+  // "artifact": priceless,
+  // "varies": priceless
 }
 
 function load(file: any, grid: zGrid) {

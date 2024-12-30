@@ -5,8 +5,6 @@ import { load, save } from './load.js';
 import Detail from './Detail.js';
 import Trove from './Trove.js';
 
-import('./zGrid/zGrid')
-
 let container = document.getElementById("zgrid_container")
 let detail_container = document.getElementById("detail_container") as HTMLDivElement
 let next_id = 0;

@@ -1,20 +1,6 @@
 - *a way of quickly generating magic item rolls / troves for 5e D&D*
 - *mimics the functionality of the Treasure tab of RavWorks, but with 5e magic items*
 
-Features
-Grid (use zGrid)
-- a grid/table with the following columns: Name, Source, Cost, Attunement, Rarity, Include in rolls, reason (for not including), quantity
-- allow the manipulation of the values of each record
-Save/Load/Merge
-- load data from CSV
-- save modified data to CSV
-- load and merge data - either ignoring existing records, replacing existing records, or only setting non-empty values of existing records
-Trove Rolls
-- limit by rarity
-- limit by gold, unset costs default to rarity value (as in DMG)
-- single rolls
-- trove rolls: up to gold amount, each roll an amount from 1% to 100% of max gold
-
 # versioning
 *loosely uses semvar (https://semver.org/)*
 
@@ -43,3 +29,6 @@ Trove Rolls
 
 # build
 ```how to build or deploy```
+
+**build:** `npm run build`\
+**preview:** `npm run preview`

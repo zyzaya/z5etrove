@@ -8,6 +8,7 @@ import('./zGrid/zGrid')
 
 let container = document.getElementById("zgrid_container")
 let detail_container = document.getElementById("detail_container") as HTMLDivElement
+let next_id = 0;
 
 let grid = new zGrid({
   parent: document.createElement('div'),
@@ -50,12 +51,12 @@ let grid = new zGrid({
 })
 
 //
+let detail: Detail;
 
 if (container != null && detail_container != null) {
-  let detail = new Detail(
+  detail = new Detail(
     detail_container, 
     (row) => {
-      console.log(row)
       grid.setRow(row["id"], row)
     }
   )
@@ -64,6 +65,17 @@ if (container != null && detail_container != null) {
     onClick: (c, r, n, row) => detail.set(row)
   })
 }
+let new_item = document.getElementById('new_item')
+if (new_item != null) {
+  new_item.onclick = () => {
+    console.log("new item")
+    grid.addRow([next_id, "new item"])
+    grid.page = grid.totalPages;
+    grid.setSelected(next_id)
+    detail?.set(grid.getRow(next_id))
+    next_id += 1;
+  }
+}
 
 let file = document.getElementById("load_file")
 if (file != null) {
@@ -71,6 +83,7 @@ if (file != null) {
     let target = event.target as HTMLInputElement
     if (event.target == null || target.files == null) return;
     load(target.files[0], grid)
+    next_id = grid.getRawData().length + 1;
   })
 }
 

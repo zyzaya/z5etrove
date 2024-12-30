@@ -29,9 +29,9 @@ function load(file: any, grid: zGrid) {
     header: true,
     complete: (results) => {
       let data: Array<Record<string, any>> = [];
-      results.data.forEach((e) => {
+      results.data.forEach((e, i) => {
         let row = e as Record<string, any>
-        row["id"] = row["Name"]
+        row["id"] = i.toString();
         // Value
         if (row["Rarity"] !== "artifact" && row["Rarity"] !== "varies") {
           let rarity = row["Rarity"]

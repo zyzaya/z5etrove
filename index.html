@@ -12,6 +12,26 @@
     <button id="save">Save</button>
     <div id="zgrid_container"></div>
     <div id="detail_container"></div>
+    <div id="trove_container">
+      <div class="rarities">
+        <label for="common">Common</label>
+        <input type="checkbox" name="common" id="common" checked>
+        <label for="uncommon">Uncommon</label>
+        <input type="checkbox" name="uncommon" id="uncommon" checked>
+        <label for="rare">Rare</label>
+        <input type="checkbox" name="rare" id="rare" checked>
+        <label for="very rare">V. Rare</label>
+        <input type="checkbox" name="very rare" id="very rare" checked>
+        <label for="legendary">Legendary</label>
+        <input type="checkbox" name="legendary" id="legendary" checked>
+        <label for="artifact">Artifact</label>
+        <input type="checkbox" name="artifact" id="artifact" checked>
+      </div>      
+      <label for="max gold">Max Gold</label>
+      <input type="number" name="max gold" id="max gold" value="100">
+      <button id="roll_trove">Roll Trove</button>
+      <button id="roll_item">Roll Item</button>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

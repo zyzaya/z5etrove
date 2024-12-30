@@ -32,6 +32,16 @@ export default class Trove {
     if (roll_trove != null) {
       roll_trove.onclick = () => {
         let data = this.filterData();
+        let remaining_gold = parseInt(this.gold_input.value)
+        let trove = [];
+        while(data.length > 0 && remaining_gold > 0) {
+          let i = getRandomInt(data.length)
+          let item = data[i];
+          trove.push(item);
+          remaining_gold -= parseInt(item["Value"])
+          data = data.filter((r) => parseInt(r["Value"]) <= remaining_gold)
+        }
+        console.log(trove)
       }
     }
     let roll_item = document.getElementById('roll_item')

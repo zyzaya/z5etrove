@@ -45,10 +45,12 @@ function load(file: any, grid: zGrid) {
           row["Quantity"] = 1
         }
         // attunement
-        if (row["Attunement"] === "requires attunement") {
-          row["Attunement"] = "yes"
-        } else {
-          row["Attunement"] = row["Attunement"].replace("requires attunement ", "")
+        if (row["Attunement"] !== "" && row["Attunement"] !== undefined) {
+          if (row["Attunement"] === "requires attunement") {
+            row["Attunement"] = "yes"
+          } else {
+            row["Attunement"] = row["Attunement"].replace("requires attunement ", "")
+          }
         }
         data.push(row)
       })

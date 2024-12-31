@@ -40,10 +40,6 @@ function load(file: any, grid: zGrid) {
             row["Include?"] = "yes"
           }
         }
-        // quantity
-        if (row["Quantity"] === "" || row["Quantity"] === undefined) {
-          row["Quantity"] = 1
-        }
         // attunement
         if (row["Attunement"] !== "" && row["Attunement"] !== undefined) {
           if (row["Attunement"] === "requires attunement") {

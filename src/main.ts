@@ -47,11 +47,6 @@ let grid = new zGrid({
       visible: false,
     },
     {
-      id: "quantity",
-      name: "#",
-      visible: false
-    },
-    {
       id: "Text",
       name: "Text",
       visible: false
